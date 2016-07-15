@@ -1,4 +1,4 @@
-# Lisp-Interpreter
+# Lisp Interpreter
 This is a Lisp Interpreter written in Python.
 
 It was based on [this](http://norvig.com/lispy.html) fantastic write-up, 
