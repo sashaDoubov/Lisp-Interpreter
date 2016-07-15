@@ -13,32 +13,39 @@ Number = (int, float) # A Scheme Number is implemented as a Python int or float
 
 
 ###### Parsing
+
 class InvalidSyntax(Exception):
     def __init__(self, value):
         self.value = value
     def __str__(self):
         return repr(self.value)
   
-# an indent combines the indented statements into one continuous line
-# checks for outermost brackets
-# formats the lines to be properly laid out
+# formatLine combines the indented statements into one continuous line
   
 def formatLines(contents):
 
+    # new list of lines
     newContents = []
-    for i in range(len(contents)):
     
-        newContents.append(contents[i])
+    for i in range(len(contents)):
+        
+        # if there's an indent detected
         if contents[i][0].isspace():
             
+            # first line cannot be spaced in (error)
             if i == 0:
                 raise InvalidSyntax("Improper Indentation")
-                
-            newContents.pop()
+             
+            # appends it to the previous line
             previousLine = newContents[-1]
             newContents.pop()
             
-            newContents .append(previousLine.rstrip('\n') + contents[i])            
+            newContents .append(previousLine.rstrip('\n') + contents[i]) 
+            
+         else:
+         
+            newContents.append(contents[i])
+            
     return newContents
 
 
@@ -57,7 +64,9 @@ def parse(contents):
     tokenizedTrees = []
     
     try:
+        # tries to properly format the lines
         contents = formatLines(contents)   
+        
     except InvalidSyntax as e:
         
         print "\nSyntax Error on line ", 0,
@@ -70,10 +79,10 @@ def parse(contents):
     
         line = contents[i]
         
+        
         try:
-            parsedLine = assembleTree(tokenize(line))
-            if (len(parsedLine)) != 1:
-                raise InvalidSyntax("Outer Brackets Missing!")
+            # parses each line and adds it onto the line
+            parsedLine = assembleTree(tokenize(line))    
             tokenizedTrees += parsedLine
             
         except InvalidSyntax as e:
@@ -141,10 +150,13 @@ def assembleTree(elements):
         
         return elements
         
-    #xor, checks for one of the parentheses to be missing
+    #xor , checks for one of the parentheses to be missing
     elif leftBracket != rightBracket:
         raise InvalidSyntax("Improper Parentheses")
     
+    
+# gives a value to each item in the tree
+# can either be a number (int or float) or a string    
 def atom(token):
 
     try: return int(token)
@@ -159,6 +171,8 @@ def atom(token):
         
         
 ###### Environments
+
+# the default symbols used in lisp
 
 def symbolValue():
     env = Env()
