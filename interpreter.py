@@ -42,7 +42,7 @@ def formatLines(contents):
             
             newContents .append(previousLine.rstrip('\n') + contents[i]) 
             
-         else:
+        else:
          
             newContents.append(contents[i])
             
