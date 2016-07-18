@@ -285,14 +285,19 @@ def openFileParse(fileName):
                  
 def interpret(lines):
     for line in lines:
-        print evaluate(line)
+    
+        evaluatedValue =  evaluate(line)
+        
+        if evaluatedValue is not None:
+            print evaluatedValue
 
     
 def main():
     if len(sys.argv) == 2:
         fileName = sys.argv[1]
         parsed =  openFileParse(fileName)
-        print parsed
+        # optionally print the parsed contents
+        #print parsed
         interpret(parsed)
     else:
         print "Invalid Command Arguments!"
