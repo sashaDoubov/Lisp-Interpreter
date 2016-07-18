@@ -1,5 +1,6 @@
 import operator as op
 import inspect
+import sys
 
 import math
 
@@ -288,9 +289,13 @@ def interpret(lines):
 
     
 def main():
-    parsed =  openFileParse("input.txt")
-    print parsed
-    interpret(parsed)
+    if len(sys.argv) == 2:
+        fileName = sys.argv[1]
+        parsed =  openFileParse(fileName)
+        print parsed
+        interpret(parsed)
+    else:
+        print "Invalid Command Arguments!"
      
     
 

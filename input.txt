@@ -1,2 +1,21 @@
-(define fact (lambda (n) (if (<= n 1) 1 (* n (fact (- n 1))))))
-(fact 10)
+(define gcd
+           (lambda (a b)
+                   (if (= a b)
+                          a
+                          (if (> a b)
+                                       (gcd (- a b) b)
+                                      (gcd a (- b a))))))
+                                      
+                                      
+                                      
+(gcd 34 5)
+(gcd 10 (gcd 400 309))
+
+(define fac
+           (lambda (n)
+                   (if (= n 0)
+                          1
+                          (* n (fac (- n 1))))))
+                          
+ 
+ (fac 10)
