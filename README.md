@@ -7,8 +7,8 @@ which I had to rely on heavily for procedures and environments. The parsing oper
 
 **How to use it:**
 
-1. Place your lisp contents into the input.txt file
-2. Run it with Python 2.7
+1. Use a command line with Python 2.7 installed
+2. Pass in your input file as a command line argument (ex. python interpreter.py *input.txt*)
 
 (Note: Multi-line statements must be spaced in/indented)
 
