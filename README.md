@@ -11,7 +11,7 @@ which I had to rely on heavily for procedures and environments. The parsing oper
 2. Pass in your input file as a command line argument (ex. python interpreter.py *input.txt*)
 
 (Note: Multi-line statements must be spaced in/indented)
-
+___
 
 My original idea for evaluation was: 
 + always find the deepest sublist,
